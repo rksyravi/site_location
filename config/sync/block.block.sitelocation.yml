@@ -1,0 +1,28 @@
+uuid: a9e153ba-7d4a-4144-bd7d-98cb2ee45e63
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_location
+    - user
+  theme:
+    - bartik
+id: sitelocation
+theme: bartik
+region: sidebar_first
+weight: -5
+provider: null
+plugin: site_location_block
+settings:
+  id: site_location_block
+  label: 'Site location'
+  provider: site_location
+  label_display: visible
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

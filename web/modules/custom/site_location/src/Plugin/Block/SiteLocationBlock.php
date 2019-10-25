@@ -58,14 +58,17 @@ class SiteLocationBlock extends BlockBase implements ContainerFactoryPluginInter
    */
   public function build() {
     $config = \Drupal::config('site_location.sitelocation');
-    $current_datetime = $this->siteLocation->CurrentDateTime($config->get('timezone'));
+    $datetime = !empty($config->get('timezone')) ? ['#lazy_builder' => ['site_location.current_time:CurrentDateTime', [$config->get('timezone')]], '#create_placeholder' => TRUE] : '';
     $build = [
       '#theme'=> 'site_location_block',
       '#content'=> [
         'country'=> $config->get('country'),
         'city'=> $config->get('city'),
         'timezone'=> $config->get('timezone'),
-        'current_datetime'=> $current_datetime
+        'current_datetime'=> $datetime,
+      ],
+      '#cache' => [
+        'tags' => ['config:site_location.sitelocation'],
       ],
     ];
 

@@ -32,7 +32,7 @@ class SiteLocationService implements SiteLocationInterface {
   }
   
   public function CurrentDateTime($timezone) {
-    return $this->dateFormatter->format($this->datetimeTime->getCurrentTime(), 'custom', 'dS M Y - h:i:s A', $timezone);
+    return ['#markup'=> $this->dateFormatter->format($this->datetimeTime->getCurrentTime(), 'custom', 'dS M Y - h:i A', $timezone)];
   }
 
 }

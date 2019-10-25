@@ -28,8 +28,11 @@ function site_location_help($route_name, RouteMatchInterface $route_match) {
  */
 function site_location_theme($existing, $type, $theme, $path) {
   return [
-    'site_location' => [
-      'variables' => ['data'=> null],
+    'site_location_block' => [
+      'variables' => [
+        'content' => NULL
+      ],
+      'render element' => 'children',
     ],
   ];
 }
